@@ -1,6 +1,4 @@
 export const solve = (x, y) => {
-  x = Math.abs(x);
-  y = Math.abs(y);
   let distance = Math.sqrt((x * x) + (y * y));
   let score = 10;
 
