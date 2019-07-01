@@ -1,23 +1,20 @@
-export const toRoman = (num) => {
+export const toRoman = (input) => {
 
-  var roman = [];
-  var romanOnes = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-  var romanTens = ["X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
-  var romanHundreds = ["C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+  var decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
+  roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'],
+  finalRoman = '';
 
-  var thousands = Math.floor(num / 1000);
-  var hundreds = Math.floor((num % 1000)/100) - 1;
-  var tens = Math.floor((num % 100)/10) - 1;
-  var ones = Math.floor((num % 10)) - 1;
+  function romanize(number, letter) {
+    while (input >= number) {
+      finalRoman += letter;
+      input -= number;
+    }
+  };
 
-  for (var i = 0; i < thousands; i++) {
-    roman.push("M");
+  for (var i = 0; i < 13; i++){
+    romanize(decimal[i], roman[i]);
   }
 
-  roman.push(romanHundreds[hundreds]);
-  roman.push(romanTens[tens]);
-  roman.push(romanOnes[ones]);
-
-  return roman.join("");
+  return finalRoman;
 
 };
